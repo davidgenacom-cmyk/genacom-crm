@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign in | Genacom CRM</title>
-  <link rel="icon" type="image/png" href="https://cdn.prod.website-files.com/698569e723cb64d9d28f0a78/698569e723cb64d9d28f0af8_genacom-fav.png">
+  <link rel="icon" type="image/png" href="<?= htmlspecialchars(genacom_favicon_url(), ENT_QUOTES, 'UTF-8') ?>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="login-wrap">
     <div class="login-card fade-up">
       <a class="brand" href="https://www.genacom.com/" target="_blank" rel="noopener">
-        <img src="https://cdn.prod.website-files.com/698569e723cb64d9d28f0a78/69856a1b23cb64d9d28f1242_genacom-logo.svg" alt="Genacom" width="140" height="36" class="brand-logo">
+        <img src="<?= htmlspecialchars(genacom_logo_url(), ENT_QUOTES, 'UTF-8') ?>" alt="Genacom" width="180" height="44" class="brand-logo">
       </a>
       <h1>Sign in</h1>
       <p class="sub">Genacom CRM — secure access for your pipeline.</p>

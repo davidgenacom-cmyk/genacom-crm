@@ -87,9 +87,12 @@ body.app-body {
 }
 
 .brand-logo {
-  height: 32px;
+  height: 36px;
   width: auto;
+  max-width: min(200px, 42vw);
   display: block;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .brand-text {

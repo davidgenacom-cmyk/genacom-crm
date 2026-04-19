@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/brand.php';
+
 /**
  * @param array<string,mixed> $opts title, active (nav slug), user
  */
@@ -16,7 +18,7 @@ function render_head(string $title, array $opts = []): void
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow">
   <title><?= $pageTitle ?> | Genacom CRM</title>
-  <link rel="icon" type="image/png" href="https://cdn.prod.website-files.com/698569e723cb64d9d28f0a78/698569e723cb64d9d28f0af8_genacom-fav.png">
+  <link rel="icon" type="image/png" href="<?= htmlspecialchars(genacom_favicon_url(), ENT_QUOTES, 'UTF-8') ?>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -27,7 +29,7 @@ function render_head(string $title, array $opts = []): void
   <header class="app-topbar">
     <div class="app-topbar-inner">
       <a class="brand" href="index.php">
-        <img src="https://cdn.prod.website-files.com/698569e723cb64d9d28f0a78/69856a1b23cb64d9d28f1242_genacom-logo.svg" alt="Genacom" width="120" height="32" class="brand-logo">
+        <img src="<?= htmlspecialchars(genacom_logo_url(), ENT_QUOTES, 'UTF-8') ?>" alt="Genacom" width="160" height="40" class="brand-logo">
         <span class="brand-text">CRM</span>
       </a>
       <?php if (!empty($opts['user'])): ?>
