@@ -1,0 +1,14 @@
+# Local MySQL for Genacom CRM — run from this folder:
+#   docker compose up -d
+# Then: cp config.docker.sample.php config.php && php install/setup-database.php
+services:
+  db:
+    image: mysql:8.0
+    container_name: genacom-crm-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: genacomlocal
+      MYSQL_DATABASE: genacom_crm
+    ports:
+      - "3306:3306"
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]

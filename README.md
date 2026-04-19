@@ -51,7 +51,45 @@ Lightweight PHP + MySQL CRM branded for **Genacom** using the **Genacom M38** de
 
    Open `http://localhost:8080/login.php`.
 
-   **Login requires MySQL running.** If you see “Cannot connect to database”, start MySQL (e.g. `brew services start mysql` or start MySQL in MAMP), then run `php install/setup-database.php` again.
+   **Login requires MySQL running.** If you see “Cannot connect to database”, see **Database troubleshooting** below.
+
+## Database troubleshooting (“Cannot connect to database”)
+
+That message means PHP cannot open a TCP connection to MySQL (wrong host/port, server stopped, or wrong user/password).
+
+### Option A — Homebrew MySQL (native on Mac)
+
+Install and start the service:
+
+```bash
+brew install mysql
+brew services start mysql
+```
+
+Wait a few seconds, then from the project folder:
+
+```bash
+cp config.sample.php config.php   # if you do not have config.php yet
+/opt/homebrew/bin/php install/setup-database.php
+```
+
+If your `root` user has a password, put it in `config.php` under `db.pass`. On some installs you must connect as your macOS user first; adjust `db.user` / `db.pass` to match.
+
+### Option B — Docker (no local MySQL install)
+
+From the project folder:
+
+```bash
+docker compose up -d
+cp config.docker.sample.php config.php
+/opt/homebrew/bin/php install/setup-database.php
+```
+
+MySQL listens on `127.0.0.1:3306` with `root` / `genacomlocal` (see `docker-compose.yml`). Stop later with `docker compose down`.
+
+### Option C — MAMP / hosting
+
+Point `config.php` at the host, port, and credentials your panel shows (often a non-`root` user and a specific database name). Run `install/setup-database.php` once against that server.
 
 ## Default credentials
 
