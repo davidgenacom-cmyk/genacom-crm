@@ -35,13 +35,23 @@ Lightweight PHP + MySQL CRM branded for **Genacom** using the **Genacom M38** de
 
    Or run `sql/schema.sql` and `sql/seed.sql` manually in your SQL admin tool after creating database `genacom_crm`.
 
-3. Serve the app from this directory (example):
+3. Serve the app from this directory.
+
+   If your shell says `command not found: php`, Homebrew PHP is usually at `/opt/homebrew/bin/php`. Either add Homebrew to your PATH (`eval "$(/opt/homebrew/bin/brew shellenv)"` in `~/.zprofile`) or run:
 
    ```bash
-   php -S localhost:8080 -t .
+   ./serve.sh 8080
+   ```
+
+   Manual equivalent:
+
+   ```bash
+   /opt/homebrew/bin/php -S localhost:8080 -t /Users/genacom13/Projects/genacom-crm
    ```
 
    Open `http://localhost:8080/login.php`.
+
+   **Login requires MySQL running.** If you see “Cannot connect to database”, start MySQL (e.g. `brew services start mysql` or start MySQL in MAMP), then run `php install/setup-database.php` again.
 
 ## Default credentials
 
